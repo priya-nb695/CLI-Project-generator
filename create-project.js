@@ -1,8 +1,10 @@
 const fs = require("fs");
-const { version } = require("os");
 const path = require("path");
 
 const projectName = process.argv[2];
+if(!projectName){
+    console.log("Plesase enter a project name");
+}
 
 const projectPath=path.join(process.cwd(),projectName);
 
@@ -11,7 +13,7 @@ if(fs.existsSync(projectPath)){
     process.exit(1);
 }
 
-fs.mkdirSync(projectPath);
+fs.mkdirSync(projectPath,{ recursive: true });
 console.log("Project folder created");
 
 fs.mkdirSync(path.join(projectPath,"src"));
@@ -26,7 +28,8 @@ fs.writeFileSync(
 fs.writeFileSync(
     path.join(projectPath,"README.md"),
         `# ${projectName}
-        Project Created with custom project generator
+
+        Project created with custom project generator.
         `); 
 
 fs.writeFileSync(

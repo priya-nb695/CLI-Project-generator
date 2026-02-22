@@ -1,3 +1,4 @@
 # my-app
-        Project Created with custom project generator
+
+        Project created with custom project generator.
         
